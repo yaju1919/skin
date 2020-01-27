@@ -63,6 +63,7 @@
         change: main,
     });
     function main(str){
+        if(input() === '') return;
         h_emoji.empty();
         getEmojiColors(str).forEach(function(v,i){
             var line = $("<div>").appendTo(h_emoji);
