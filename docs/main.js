@@ -47,7 +47,7 @@
         title: "絵文字簡単入力",
         placeholder: "ここから選択",
         change: function(str){
-            if(!h_emoji) return;
+            if(!setup_flag) return;
             $("#i").val(str);
             main(str);
         },
@@ -66,6 +66,7 @@
         change: main,
     });
     function main(str){
+        if(!setup_flag) return;
         if(input() === '') return;
         h_emoji.empty();
         getEmojiColors(str).forEach(function(v,i){
@@ -97,4 +98,5 @@
         save: "nop",
         textarea: true,
     });
+    var setup_flag = true;
 })();
