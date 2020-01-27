@@ -96,6 +96,7 @@
     yaju1919.addInputText(h,{
         placeholder: "絵文字アート作成用\n自動セーブ機能あり",
         save: "nop",
+        hankaku: false,
         textarea: true,
     });
     h.append("<br>");
