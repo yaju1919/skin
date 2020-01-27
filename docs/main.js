@@ -53,8 +53,11 @@
         },
         list: emojiList,
     });
+    h.append("<br>");
     var h_input = $("<div>").appendTo(h);
+    h.append("<br>");
     var h_emoji = $("<div>").appendTo(h);
+    h.append("<br>");
     var input = yaju1919.addInputText(h_input,{
         id: "i",
         title: "絵文字入力欄",
