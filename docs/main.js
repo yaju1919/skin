@@ -102,20 +102,24 @@
     h.append("<br>");
     var width = yaju1919.addInputNumber(h,{
         title: "幅",
+        value: 5,
         min: 1,
         max: 9,
-        int: true
+        int: true,
+        save: "width",
     });
     var height = yaju1919.addInputNumber(h,{
         title: "高さ",
+        value: 5,
         min: 1,
         max: 9,
-        int: true
+        int: true,
+        save: "height",
     });
     var result;
     addBtn("おんｊ用動くAA作成ボタン",function(){
         result = "@aaa:0.1\n" + getEmojiColors(input()).map(function(v){
-            return new Array(height()).fill().map(function(v){
+            return new Array(height()).fill().map(function(){
                 return yaju1919.repeat(v, width());
             }).join('\n');
         }).join('@@@');
