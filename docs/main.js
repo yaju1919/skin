@@ -118,11 +118,12 @@
     });
     var result;
     addBtn("おんｊ用動くAA作成ボタン",function(){
-        result = "@aaa:0.1\n" + getEmojiColors(input()).map(function(v){
+        var ar = getEmojiColors(input()).slice(1);
+        result = "@aaa:0.1\n" + ar.concat(ar.slice(1,-1).reverse()).map(function(v){
             return new Array(height()).fill().map(function(){
                 return yaju1919.repeat(v, width());
             }).join('\n');
-        }).join('@@@');
+        }).join('\n@@@\n');
         showResult(result);
     });
     addBtn("copy",function(){
