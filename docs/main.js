@@ -39,6 +39,7 @@
         title: "絵文字簡単入力",
         placeholder: "ここから選択",
         change: function(str){
+            if(!h_emoji) return;
             $("#i").val(str);
             main(str);
         },
