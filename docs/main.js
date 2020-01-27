@@ -90,5 +90,6 @@
     yaju1919.addInputText(h,{
         placeholder: "特に意味のない入力欄\n絵文字アート作成用\n自動セーブ機能あり",
         save: "nop",
+        textarea: true,
     });
 })();
