@@ -73,6 +73,7 @@
                 title: colorName[i],
                 value: v
             });
+            line.find("div").css({display: "inline-block"});
         });
     }
     function getEmojiColors(str){
