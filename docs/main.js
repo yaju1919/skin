@@ -68,7 +68,6 @@
         });
     }
     function getEmojiColors(str){
-        if(str.length < 2) return;
         var emoji = str.slice(0,2);
         var ar = []
         ar.push(emoji);
