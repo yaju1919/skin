@@ -94,9 +94,42 @@
     }
     h.append("<br>");
     yaju1919.addInputText(h,{
-        placeholder: "特に意味のない入力欄\n絵文字アート作成用\n自動セーブ機能あり",
+        placeholder: "絵文字アート作成用\n自動セーブ機能あり",
         save: "nop",
         textarea: true,
     });
+    h.append("<br>");
+    h.append("<br>");
+    var width = yaju1919.addInputNumber(h,{
+        title: "幅",
+        min: 1,
+        max: 9,
+        int: true
+    });
+    var height = yaju1919.addInputNumber(h,{
+        title: "高さ",
+        min: 1,
+        max: 9,
+        int: true
+    });
+    var result;
+    addBtn("おんｊ用動くAA作成ボタン",function(){
+        result = "@aaa:0.1\n" + getEmojiColors(input()).map(function(v){
+            return new Array(height()).fill().map(function(v){
+                return yaju1919.repeat(v, width());
+            }).join('\n');
+        }).join('@@@');
+        showResult(result);
+    });
+    addBtn("copy",function(){
+        if(result) yaju1919.copy(result);
+    });
+    var result_elm = $("<div>").appendTo(h);
+    function showResult(str){
+        result_elm.empty();
+        str.split('\n').forEach(function(v){
+            $("<div>").text(v).appendTo(result_elm);
+        });
+    }
     var setup_flag = true;
 })();
