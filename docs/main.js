@@ -155,13 +155,18 @@
         textarea: true,
     });
     var typing_array = [];
+    function typing(){
+        var newValue = $(this).val(),
+            lastValue = typing_array.slice(-1);
+        if(newValue === lastValue) return;
+        typing_array.push(newValue);
+        showResult(typing_array);
+    }
+    $("#typing").keydown(typing).keypress(typing).keyup(typing);
     addBtn("タイピングAAをリセット",function(){
         typing_array = [];
-    },$("#adv"))
-    $("#typing").keydown(function(){
-        typing_array.push($(this).val());
-        showResult(typing_array);
-    });
+        h_result.empty();
+    },$("#adv"));
     $("#adv").append("<br>");
     var setup_flag = true;
 })();
