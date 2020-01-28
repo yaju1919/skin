@@ -93,32 +93,38 @@
         return ar;
     }
     h.append("<br>");
-    yaju1919.addInputText(h,{
-        placeholder: "絵文字アート作成用\n自動セーブ機能あり",
+    yaju1919.addHideArea(h,{
+        id2: "hide",
+        title: "おんｊ動くAA作成ツール",
+    });
+    addBtn("copy",function(){
+        if(result) yaju1919.copy(result);
+    },$("#hide"));
+    addBtn("簡単作成",function(){
+        var width = 5, height = 5;
+        var ar = getEmojiColors(input()).slice(1);
+        result = "@aaa:0.1\n" + ar.concat(ar.slice(1,-1).reverse()).map(function(v){
+            return new Array(height).fill().map(function(){
+                return yaju1919.repeat(v, width);
+            }).join('\n');
+        }).join('\n@@@\n');
+        showResult(result);
+    },$("#hide"));
+    $("#hide").append("<br>");
+    $("#hide").append("<br>");
+    yaju1919.addInputText($("#hide"),{
+        title: "高度な操作",
+        placeholder: colorName.map(function(v,i){
+            return i + '...' + v;
+        }).join('\n'),
         save: "nop",
         hankaku: false,
         textarea: true,
     });
-    h.append("<br>");
-    h.append("<br>");
-    var width = yaju1919.addInputNumber(h,{
-        title: "幅",
-        value: 5,
-        min: 1,
-        max: 9,
-        int: true,
-        save: "width",
-    });
-    var height = yaju1919.addInputNumber(h,{
-        title: "高さ",
-        value: 5,
-        min: 1,
-        max: 9,
-        int: true,
-        save: "height",
-    });
+    $("#hide").append("<br>");
     var result;
-    addBtn("おんｊ用動くAA作成ボタン",function(){
+    addBtn("高度な動きを作成",function(){
+        alert("未完成");
         var ar = getEmojiColors(input()).slice(1);
         result = "@aaa:0.1\n" + ar.concat(ar.slice(1,-1).reverse()).map(function(v){
             return new Array(height()).fill().map(function(){
@@ -126,11 +132,8 @@
             }).join('\n');
         }).join('\n@@@\n');
         showResult(result);
-    });
-    addBtn("copy",function(){
-        if(result) yaju1919.copy(result);
-    });
-    var result_elm = $("<div>").appendTo(h);
+    },$("#hide"));
+    var result_elm = $("<div>").appendTo($("#hide"));
     function showResult(str){
         result_elm.empty();
         str.split('\n').forEach(function(v){
