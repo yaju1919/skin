@@ -171,6 +171,7 @@
     addBtn("タイピングAAをリセット",function(){
         typing_array = [];
         h_result.empty();
+        $("#typing").val('');
     },$("#adv"));
     $("#adv").append("<br>");
     var setup_flag = true;
