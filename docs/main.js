@@ -107,6 +107,7 @@
             value: str,
             readonly: true,
             textarea: true,
+            hankaku: false,
         });
     }
     addBtn("簡単作成",function(){
