@@ -95,6 +95,8 @@
         id2: "hide",
         title: "おんｊ動くAA作成ツール",
     });
+    h.append("<br>");
+    h.append("<br>");
     var h_result = $("<div>").appendTo(h);
     function showResult(array){
         var str = "@aaa:0.1\n" + array.join('\n@@@\n');
@@ -103,6 +105,7 @@
             title: "出力",
             value: str,
             readonly: true,
+            textarea: true,
         });
     }
     addBtn("簡単作成",function(){
@@ -114,6 +117,7 @@
             }).join('\n');
         }));
     },$("#hide"));
+    $("#hide").append("<br>");
     yaju1919.addHideArea($("#hide"),{
         id2: "adv",
         title: "高度な動き",
