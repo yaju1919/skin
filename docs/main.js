@@ -159,7 +159,9 @@
     var typing_order = 0;
     function typing(){
         var newValue = typing_area(),
-            lastValue = typing_array.slice(-1)[0].slice(0,-1);
+            lastValue = typing_array.slice(-1)[0];
+        if(!lastValue) return;
+        lastValue = lastValue.slice(0,-1)
         if(newValue === lastValue) return;
         typing_array.push(newValue + ((++typing_order)%6 < 3 ? '_' : ' '));
         showResult(typing_array);
