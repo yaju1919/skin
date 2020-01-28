@@ -112,7 +112,7 @@
     },$("#hide"));
     $("#hide").append("<br>");
     $("#hide").append("<br>");
-    yaju1919.addInputText($("#hide"),{
+    var advance = yaju1919.addInputText($("#hide"),{
         title: "高度な操作",
         placeholder: colorName.map(function(v,i){
             return i + '...' + v;
@@ -121,18 +121,21 @@
         hankaku: false,
         textarea: true,
     });
-    $("#hide").append("<br>");
     var result;
     addBtn("高度な動きを作成",function(){
         alert("未完成");
         var ar = getEmojiColors(input()).slice(1);
-        result = "@aaa:0.1\n" + ar.concat(ar.slice(1,-1).reverse()).map(function(v){
-            return new Array(height()).fill().map(function(){
-                return yaju1919.repeat(v, width());
-            }).join('\n');
+        var str = advance();
+        result = "@aaa:0.1\n" + ar.concat(ar.slice(1,-1).reverse()).map(function(v,i){
+            var str2 = str;
+            ar.forEach(function(val){
+                str2 = str2.replace(/1/g, ar[0]);
+            });
         }).join('\n@@@\n');
         showResult(result);
     },$("#hide"));
+    $("#hide").append("<br>");
+    $("#hide").append("<br>");
     var result_elm = $("<div>").appendTo($("#hide"));
     function showResult(str){
         result_elm.empty();
