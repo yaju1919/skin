@@ -118,9 +118,12 @@
         }));
     },$("#hide"));
     $("#hide").append("<br>");
+    $("#hide").append("<br>");
     yaju1919.addHideArea($("#hide"),{
         id2: "adv",
         title: "高度な動き",
+        value: "000000000\n011111110\n012222210\n012333210\n012343210\n012333210\n012222210\n011111110\n000000000",
+        save: "adv",
     });
     var advance = yaju1919.addInputText($("#adv"),{
         placeholder: colorName.slice(1).map(function(v,i){
