@@ -163,7 +163,7 @@
             var lastValue = typing_array.slice(-1)[0].slice(0,-1);
             if(newValue === lastValue) return;
         }
-        typing_array.push(newValue + ((++typing_order)%6 < 3 ? '_' : ' '));
+        typing_array.push(newValue + ((++typing_order)%4 < 2 ? '＿' : '　'));
         showResult(typing_array);
     }
     $("#typing").keydown(typing).keypress(typing).keyup(typing);
