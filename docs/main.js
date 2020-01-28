@@ -100,8 +100,8 @@
     h.append("<br>");
     h.append("<br>");
     var h_result = $("<div>").appendTo(h);
-    function showResult(array){
-        var str = "@aaa:0.1\n" + array.join('\n@@@\n');
+    function showResult(array,time){
+        var str = "@aaa:" + (time ? time : 0.2) + "\n" + array.join('\n@@@\n');
         $("<div>").text("現在の文字数:"+str.length).appendTo(h_result.empty());
         yaju1919.addInputText(h_result,{
             title: "出力",
@@ -149,18 +149,20 @@
         }));
     },$("#adv"));
     $("#adv").append("<br>");
-    yaju1919.addInputText($("#adv"),{
+    $("#adv").append("<br>");
+    var typing_area = yaju1919.addInputText($("#adv"),{
         id: "typing",
         title: "タイピングAAの作成",
         textarea: true,
     });
     var typing_array = [];
+    var typing_order = 0;
     function typing(){
-        var newValue = $(this).val(),
-            lastValue = typing_array.slice(-1);
+        var newValue = typing_area(),
+            lastValue = typing_array.slice(-1).slice(0,-1);
         if(newValue === lastValue) return;
-        typing_array.push(newValue);
-        showResult(typing_array);
+        typing_array.push(newValue + ((++typing_order)%2 ? '_' : ' '));
+        showResult(typing_array,0.5);
     }
     $("#typing").keydown(typing).keypress(typing).keyup(typing);
     addBtn("タイピングAAをリセット",function(){
