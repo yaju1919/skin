@@ -64,7 +64,6 @@
     var input = yaju1919.addInputText(h_input,{
         id: "i",
         title: "絵文字入力欄",
-        save: "emoji",
         placeholder: "絵文字を入力してください",
         change: main,
     });
@@ -153,6 +152,7 @@
     var typing_area = yaju1919.addInputText($("#adv"),{
         id: "typing",
         title: "タイピングAAの作成",
+        hankaku: false,
         textarea: true,
     });
     var typing_array = [];
