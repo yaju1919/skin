@@ -114,7 +114,7 @@
         var width = 5, height = 5;
         var ar = getEmojiColors(input()).slice(1);
         showResult(ar.concat(ar.slice(1,-1).reverse()).map(function(v){
-            return new Array(height).fill().map(function(){
+            return yaju1919.makeArray(height).map(function(){
                 return yaju1919.repeat(v, width);
             }).join('\n');
         }));
@@ -142,7 +142,7 @@
     addBtn("高度な動きを作成",function(){
         var ar = getEmojiColors(input()).slice(1);
         var str = advance();
-        showResult(new Array(8).fill().map(function(v,i){
+        showResult(yaju1919.makeArray(8).map(function(v,i){
             return str.replace(/[0-4]/g, function(n){
                 return ar[calc(Number(n) + i)];
             });
