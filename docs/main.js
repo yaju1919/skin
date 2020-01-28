@@ -8,7 +8,9 @@
         return $("<button>",{text: title}).appendTo(parentNode||h).click(func);
     }
     $("<h1>",{text:"絵文字の肌の色差分を取得"}).appendTo(h);
+    $("<div>",{text:"肌の色差分の絵文字は廃止されているのでスマホだと見れません..."}).appendTo(h);
     $("<div>",{text:"出力内容は、クリックしただけでコピーされます。"}).appendTo(h);
+    h.append("<br>");
     var colorName = [
         "標準",
         "明るい肌色",
