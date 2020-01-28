@@ -148,5 +148,20 @@
             });
         }));
     },$("#adv"));
+    $("#adv").append("<br>");
+    yaju1919.addInputText($("#adv"),{
+        id: "typing",
+        title: "タイピングAAの作成",
+        textarea: true,
+    });
+    var typing_array = [];
+    addBtn("タイピングAAをリセット",function(){
+        typing_array = [];
+    },$("#adv"))
+    $("#typing").keydown(function(){
+        typing_array.push($(this).val());
+        showResult(typing_array);
+    });
+    $("#adv").append("<br>");
     var setup_flag = true;
 })();
