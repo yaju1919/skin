@@ -179,7 +179,6 @@
     $("#typing").keydown(typing).keypress(typing).keyup(typing);
     addBtn("タイピングAAをリセット",function(){
         typing_array = [];
-        lastValue = null;
         h_result.empty();
         $("#typing").val('');
     },$("#adv"));
