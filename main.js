@@ -156,28 +156,25 @@
         hankaku: false,
         textarea: true,
     });
-    var typing_array = [],
-        typing_order = 0,
-        lastValue,
-        lastBtm = '';
+    var typing_array = [];
     function typingWait(str){
         return yaju1919.makeArray(6).map(function(v){
             return str + (v % 2 ? '＿' : '');
         });
     }
     function typing(){
-        var newValue = typing_area();
+        var newValue = typing_area().replace(/＿/g,''),
+            lastValue = typing_array.slice(-1)[0].replace(/＿/g,'') || '',
+            btm = newValue.slice(-1),
+            lastBtm = lastValue.slice(-1);
         if(newValue === lastValue) return;
-        var btm = newValue.slice(-1);
         //------------------------------------------------------------------------
-        if(btm.trim()===''&&lastBtm.trim()!==''){
-            if(btm.trim() === '' && lastBtm.trim() !== '') typing_array = typing_array.concat(typingWait(lastValue));
+        if(btm.trim()==='' && lastBtm.trim() !== ''){
+            typing_array = typing_array.concat(typingWait(lastValue));
         }
         typing_array.push(newValue + '＿');
         //------------------------------------------------------------------------
         showResult(typingWait('').concat(typing_array,typingWait(newValue)),0.2);
-        lastValue = newValue;
-        lastBtm = btm;
     }
     $("#typing").keydown(typing).keypress(typing).keyup(typing);
     addBtn("タイピングAAをリセット",function(){
