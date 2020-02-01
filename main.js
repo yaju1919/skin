@@ -164,7 +164,7 @@
     }
     function typing(){
         var newValue = typing_area().replace(/＿/g,''),
-            lastValue = typing_array.slice(-1)[0].replace(/＿/g,'') || '',
+            lastValue = (typing_array.slice(-1)[0] || '').replace(/＿/g,''),
             btm = newValue.slice(-1),
             lastBtm = lastValue.slice(-1);
         if(newValue === lastValue) return;
