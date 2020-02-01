@@ -99,8 +99,8 @@
     h.append("<br>");
     h.append("<br>");
     var h_result = $("<div>").appendTo(h);
-    function showResult(array){
-        var str = "@aaa:0.1\n" + array.join('\n@@@\n');
+    function showResult(array,speed){
+        var str = "@aaa:" + (speed||0.1) + "\n" + array.join('\n@@@\n');
         $("<div>").text("現在の文字数:"+str.length).appendTo(h_result.empty());
         yaju1919.addInputText(h_result,{
             title: "出力",
@@ -156,20 +156,33 @@
         hankaku: false,
         textarea: true,
     });
-    var typing_array = [];
-    var typing_order = 0;
+    var typing_array = [],
+        typing_order = 0,
+        lastValue,
+        lastBtm = '';
+    function typingWait(str){
+        return yaju1919.makeArray(6).map(function(v){
+            return str + (v % 2 ? '＿' : '');
+        });
+    }
     function typing(){
         var newValue = typing_area();
-        if(typing_array.length){
-            var lastValue = typing_array.slice(-1)[0].slice(0,-1);
-            if(newValue === lastValue) return;
+        if(newValue === lastValue) return;
+        var btm = newValue.slice(-1);
+        //------------------------------------------------------------------------
+        if(btm.trim()===''&&lastBtm.trim()!==''){
+            if(btm.trim() === '' && lastBtm.trim() !== '') typing_array = typing_array.concat(typingWait(lastValue));
         }
-        typing_array.push(newValue + ((++typing_order)%4 < 2 ? '＿' : '　'));
-        showResult(typing_array);
+        typing_array.push(newValue + '＿');
+        //------------------------------------------------------------------------
+        showResult(typingWait('').concat(typing_array,typingWait(newValue)),0.2);
+        lastValue = newValue;
+        lastBtm = btm;
     }
     $("#typing").keydown(typing).keypress(typing).keyup(typing);
     addBtn("タイピングAAをリセット",function(){
         typing_array = [];
+        lastValue = null;
         h_result.empty();
         $("#typing").val('');
     },$("#adv"));
