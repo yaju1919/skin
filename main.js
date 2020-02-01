@@ -159,7 +159,7 @@
     var typing_array = [];
     function typingWait(str){
         return yaju1919.makeArray(6).map(function(v){
-            return str + (v % 2 ? '＿' : '');
+            return str + (v % 2 ? '' : '＿');
         });
     }
     function typing(){
